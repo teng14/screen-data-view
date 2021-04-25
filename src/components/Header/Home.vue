@@ -4,9 +4,9 @@
  * @Desc:
 -->
 <template lang="pug">
-  .header
-    .text 重庆智慧茶叶-大数据中心
-    .time {{time}}
+.header
+  .text 重庆智慧茶叶-大数据中心
+  .time {{ time }}
 </template>
 
 <script>
@@ -17,7 +17,7 @@ export default {
   props: {},
   data() {
     return {
-      time: "--:--:--"
+      time: "--:--:--",
     };
   },
   computed: {},
@@ -32,25 +32,28 @@ export default {
       setInterval(() => {
         this.time = dateFormat(+new Date());
       }, 1000);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped lang="stylus">
-@font-face {
-  font-family: digi;
-  src: url(https://dyimg.bosslib.com/ds-digi-webfont.woff2);
-}
+@font-face
+  font-family digi
+  src url('https://dyimg.bosslib.com/ds-digi-webfont.woff2') //dyimg.bosslib.com/ds-digi-webfont.woff2);
+
 .header
   position relative
-  height 85px
+  height 5rem
   background url('./images/bg_header.png') center center no-repeat
+  background auto 100%
+
   .text
-    line-height 73px
-    font-size 36px
+    line-height 4.2rem
+    font-size 1.8rem
     color #fff
     text-align center
+
   .time
     position absolute
     left 0
@@ -58,7 +61,7 @@ export default {
     padding-left 40px
     height 29px
     line-height 29px
-    font-size 23px
+    font-size 1.6rem
     font-family digi
     color #F7F7F7
     background url('./images/icon_clock.png') center left no-repeat

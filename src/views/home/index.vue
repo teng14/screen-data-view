@@ -4,16 +4,16 @@
  * @Desc:
 -->
 <template lang="pug">
-  dv-full-screen-container.main
-    .main-bd
-      HomeHeader
-      .content
-        .left
-          DataViewLeft
-        .center
-          DataViewCenter
-        .right
-          DataViewRight
+dv-full-screen-container.main
+  .main-bd
+    HomeHeader
+    .content
+      .left
+        DataViewLeft
+      .center
+        DataViewCenter
+      .right
+        DataViewRight
 </template>
 
 <script>
@@ -31,18 +31,21 @@ export default {
   watch: {},
   created() {},
   mounted() {},
-  methods: {}
+  methods: {},
 };
 </script>
 
 <style scoped lang="stylus">
 .main
   background rgba(4, 17, 62, 1)
+
 .main-bd
-  padding 0 50px
+  padding 0 1.2rem
+
   .content
     display flex
     justify-content space-between
+
     .center
       flex 1
 </style>

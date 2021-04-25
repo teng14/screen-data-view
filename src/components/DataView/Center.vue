@@ -4,23 +4,23 @@
  * @Desc:
 -->
 <template lang="pug">
-  .module
-    .map
-      .map-cantainer(ref='mapCantainer')
-    .module-bottom
-      ModuleBox.dv-box(type='small', title='19年亩均单产')
-        .chart
-          .chart-bd
-            <dv-digital-flop :config="config1" style="width:100%;height:3rem;" />
+.module
+  .map
+    .map-cantainer(ref="mapCantainer")
+  .module-bottom
+    ModuleBox.dv-box(type="small", title="19年亩均单产")
+      .chart
+        .chart-bd
+          <dv-digital-flop :config="config1" style="width:100%;height:3rem;" />
 
-      ModuleBox.dv-box(type='small', title='19年亩均收益')
-        .chart
-          .chart-bd
-            <dv-digital-flop :config="config2" style="width:100%;height:3rem;" />
-      ModuleBox.dv-box(type='small', title='19年平均单价')
-        .chart
-          .chart-bd
-            <dv-digital-flop :config="config3" style="width:100%;height:3rem;" />
+    ModuleBox.dv-box(type="small", title="19年亩均收益")
+      .chart
+        .chart-bd
+          <dv-digital-flop :config="config2" style="width:100%;height:3rem;" />
+    ModuleBox.dv-box(type="small", title="19年平均单价")
+      .chart
+        .chart-bd
+          <dv-digital-flop :config="config3" style="width:100%;height:3rem;" />
 </template>
 
 <script>
@@ -39,25 +39,25 @@ export default {
         content: "{nt}公斤/亩",
         style: {
           fill: "#fff",
-          fontSize: 20
-        }
+          fontSize: 20,
+        },
       },
       config2: {
         number: [110],
         content: "{nt}元",
         style: {
           fill: "#fff",
-          fontSize: 20
-        }
+          fontSize: 20,
+        },
       },
       config3: {
         number: [3200],
         content: "{nt}元/公斤",
         style: {
           fill: "#fff",
-          fontSize: 20
-        }
-      }
+          fontSize: 20,
+        },
+      },
     };
   },
   computed: {},
@@ -101,11 +101,11 @@ export default {
             type: "piecewise",
             pieces: [
               { value: 1000, label: "茶产业综合示范区", color: "#0DBA29" },
-              { value: 5000, label: "茶叶重点区县", color: "#0DB1B1" }
+              { value: 5000, label: "茶叶重点区县", color: "#0DB1B1" },
             ],
             outOfRange: {
-              color: "#082671"
-            }
+              color: "#082671",
+            },
           },
           series: [
             {
@@ -117,7 +117,7 @@ export default {
 
               aspectScale: 1.2, //地图长度比
               label: {
-                show: true
+                show: true,
               },
               itemStyle: {
                 normal: {
@@ -138,58 +138,75 @@ export default {
                   //     globalCoord: false // 缺省为 false
                   // },
                   borderColor: "#545967", //边界线颜色
-                  borderWidth: "1" //边界线的宽度
+                  borderWidth: "1", //边界线的宽度
                 },
                 emphasis: {
                   // 鼠标移入时区域的样式
                   areaColor: "#74C4F0",
-                  borderWidth: 0
+                  borderWidth: 0,
                   // color: "white"
-                }
+                },
               },
               label: {
                 normal: {
                   show: true,
                   textStyle: {
-                    color: "#fff" //省市区字体颜色
-                  }
+                    color: "#fff", //省市区字体颜色
+                  },
                 },
                 emphasis: {
                   //对应的鼠标悬浮效果
                   show: true,
                   textStyle: {
-                    color: "#fff" //鼠标移入对应的省市区字体颜色
-                  }
-                }
+                    color: "#fff", //鼠标移入对应的省市区字体颜色
+                  },
+                },
               },
-              data: mapData // 上面添加了 name,value,level,cityCode的数据
-            }
-          ]
+              data: mapData, // 上面添加了 name,value,level,cityCode的数据
+            },
+          ],
         };
         const chart = echarts.init(this.$refs.mapCantainer, "dark");
         console.log(this.$refs.mapCantainer);
         echarts.registerMap("cityMap", mapJson, {});
         chart.setOption(this.mapOption);
       } catch (error) {}
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped lang="stylus">
 .map
-  height 78vh
+  //height 80vh
   .map-cantainer
     width 100%
     height 100%
+
 .chart
   padding 10px
+
   .chart-title
     font-size 16px
     color #fff
+
 .module
+  display flex
+  flex-flow column
+  align-items stretch
+  height calc(100vh - 5rem)
+
+  .map
+    flex 1
+
   .dv-box
-    width 33%
+    margin-left 0.65rem
+    width 32%
+
   .module-bottom
     display flex
+    margin-top 2rem
+    margin-bottom 1rem
+    width 100%
+    align-content space-between
 </style>
